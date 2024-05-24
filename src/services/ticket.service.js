@@ -16,6 +16,8 @@ const searchTicket = async (from, to, time) => {
             }
         })
 
+
+
         const start = await db.DiemDung.findAll(
             { where: { dia_diem: fromId[0].id } }
         )
@@ -76,4 +78,19 @@ const searchTicket = async (from, to, time) => {
 
 }
 
-module.exports = { searchTicket }
+const getTicketPriceById = async (id) => {
+    try {
+        const ticket = await db.ChuyenDi.findAll({
+            where: {
+                id: id
+            }
+        })
+        // console.log(ticket)
+        return ticket
+    }
+    catch (e) {
+        console.log(e)
+        return -1
+    }
+}
+module.exports = { searchTicket, getTicketPriceById }
