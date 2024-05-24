@@ -3,12 +3,25 @@ const db = require("../models/index");
 const searchTicket = async (from, to, time) => {
 
     try {
+
+        const fromId = await db.DiaDiem.findAll({
+            where: {
+                ten: from
+            }
+        })
+
+        const toId = await db.DiaDiem.findAll({
+            where: {
+                ten: to
+            }
+        })
+
         const start = await db.DiemDung.findAll(
-            { where: { dia_diem: from } }
+            { where: { dia_diem: fromId[0].id } }
         )
 
         const end = await db.DiemDung.findAll(
-            { where: { dia_diem: to } }
+            { where: { dia_diem: toId[0].id } }
         )
 
         const carList = await db.Xe.findAll()
