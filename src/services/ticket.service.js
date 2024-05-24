@@ -15,6 +15,7 @@ const searchTicket = async (from, to, time) => {
 
         var ticketList = []
 
+
         for (let i = 0; i < start.length; i++) {
             for (let j = 0; j < end.length; j++) {
 
@@ -22,7 +23,9 @@ const searchTicket = async (from, to, time) => {
                     where: {
                         diem_di: start[i].id,
                         diem_den: end[j].id,
-                        xuat_phat: time
+                        xuat_phat: {
+                            [db.Sequelize.Op.like]: `${time}%`
+                        }
                     },
                     raw: true
                 })
