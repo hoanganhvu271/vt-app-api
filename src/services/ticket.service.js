@@ -140,4 +140,33 @@ const getCarInfomationById = async (id) => {
     }
 }
 
-module.exports = { searchTicket, getTicketPriceById, getCarInfomationById }
+const getTicketById = async (id) => {
+    try {
+        const ticket = await db.ChuyenDi.findAll({
+            where: {
+                id: id
+            }
+        })
+        const point = await db.DiemDung.findAll(
+        )
+
+
+
+        for (let i = 0; i < point.length; i++) {
+            if (point[i].id == ticket[0].diem_di) {
+                ticket[0].diem_di = point[i].ten
+            }
+            if (point[i].id == ticket[0].diem_den) {
+                ticket[0].diem_den = point[i].ten
+            }
+        }
+
+        return ticket
+    }
+    catch (e) {
+        console.log(e)
+        return null
+    }
+}
+
+module.exports = { searchTicket, getTicketPriceById, getCarInfomationById, getTicketById }
