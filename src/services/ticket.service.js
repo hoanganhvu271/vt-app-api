@@ -93,4 +93,46 @@ const getTicketPriceById = async (id) => {
         return -1
     }
 }
-module.exports = { searchTicket, getTicketPriceById }
+
+
+const getCarInfomationById = async (id) => {
+    try {
+        var carList = await db.Xe.findAll({
+            where: {
+                id: id
+            }
+        })
+
+        var serviceList = await db.CoTienIch.findAll({
+            where: {
+                id_xe: id
+            }
+        })
+
+        tienIchList = []
+
+        for (var i = 0; i < serviceList.length; i++) {
+            var service = await db.TienIch.findOne({
+                where: {
+                    id: serviceList[i].id_tien_ich
+                }
+            })
+            console.log(service)
+            tienIchList.push(service.ten)
+        }
+
+        var data = {
+            ten: carList[0].ten_nha_xe,
+            so_cho: carList[0].suc_chua,
+            loai_xe: carList[0].ten,
+            tien_ich: tienIchList
+        }
+
+        return data
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
+
+module.exports = { searchTicket, getTicketPriceById, getCarInfomationById }

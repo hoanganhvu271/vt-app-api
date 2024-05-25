@@ -1,5 +1,5 @@
 
-const { searchTicket, getTicketPriceById } = require('../services/ticket.service')
+const { searchTicket, getTicketPriceById, getCarInfomationById } = require('../services/ticket.service')
 
 const searchTicketHandler = async (req, res) => {
     var from = req.query.fr
@@ -83,4 +83,36 @@ const getTicketPrice = async (req, res) => {
     }
 }
 
-module.exports = { searchTicketHandler, getTicketPrice }
+const getCarInformation = async (req, res) => {
+    var id = req.query.id
+    try {
+        var car = await getCarInfomationById(id)
+        // console.log(car)
+        if (car != null) {
+            var response = {
+                status: 200,
+                message: "OK",
+                data: car
+            }
+            res.status(200).json(response)
+        }
+        else {
+            var response = {
+                status: 404,
+                message: "Not found car",
+            }
+            res.status(404).json(response)
+        }
+    }
+    catch (err) {
+        console.log(err)
+        var response = {
+            status: 500,
+            message: "Server Error",
+        }
+        res.status(500).json(response)
+    }
+
+}
+
+module.exports = { searchTicketHandler, getTicketPrice, getCarInformation }
