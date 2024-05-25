@@ -26,14 +26,14 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             },
             ngay_sinh: {
-                type: DataTypes.DATE,
+                type: DataTypes.STRING,
                 allowNull: false
             },
             gioi_tinh: {
                 type: DataTypes.ENUM('Nam', 'Nu', 'Khac'),
                 allowNull: false
             },
-            so_CCCD: {
+            cccd: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true
