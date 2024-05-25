@@ -110,6 +110,7 @@ const getCarInfomationById = async (id) => {
         })
 
         tienIchList = []
+        var data = []
 
         for (var i = 0; i < serviceList.length; i++) {
             var service = await db.TienIch.findOne({
@@ -117,16 +118,20 @@ const getCarInfomationById = async (id) => {
                     id: serviceList[i].id_tien_ich
                 }
             })
-            console.log(service)
+
+
+            // console.log(service)
             tienIchList.push(service.ten)
+
         }
 
-        var data = {
+        var data = []
+        data.push({
             ten: carList[0].ten_nha_xe,
             so_cho: carList[0].suc_chua,
             loai_xe: carList[0].ten,
             tien_ich: tienIchList
-        }
+        })
 
         return data
     } catch (error) {
