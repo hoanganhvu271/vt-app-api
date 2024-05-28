@@ -1,7 +1,7 @@
 const TheoDoi = require('../models/TheoDoi');
 const db = require('../models/index');
 
-const insertFollower = async (tbId, cdId) => {
+const insertFollower = async (tbId, tickketArray) => {
     try {
 
         //insert new device
@@ -12,27 +12,33 @@ const insertFollower = async (tbId, cdId) => {
             device = await db.ThietBi.create({ token: tbId })
         }
 
-        //check existing
-        const follower = await db.TheoDoi.findOne({
+        //delete
+        await db.TheoDoi.destroy({
             where: {
                 tbId: device.id,
-                cdId: cdId
             }
-
         })
 
-        if (follower) {
-            return
+
+        for (let i = 0; i < tickketArray.length; i++) {
+            await insertFollowerForTicket(device.id, tickketArray[i])
         }
 
-        await db.TheoDoi.create({
-            tbId: device.id,
-            cdId: cdId
-        })
 
     } catch (error) {
         console.error(error)
     }
 }
 
-module.exports = { insertFollower }
+
+const checkAllPrice = async () => {
+    try {
+
+
+    } catch (error) {
+        console.error(error)
+    }
+
+}
+
+module.exports = { insertFollower, checkAllPrice }

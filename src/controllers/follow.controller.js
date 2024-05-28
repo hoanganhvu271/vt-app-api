@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('../fcm.json');
-const { insertFollower } = require('../services/follow.service')
+const { insertFollower, checkAllPrice } = require('../services/follow.service')
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -34,13 +34,25 @@ const followTicketHandler = async (req, res) => {
         const tbId = req.body.tbId;
         const cdId = req.body.cdId;
 
-        await insertFollower(tbId, cdId);
+        ticketArray = JSON.parse(cdId)
+        console.log(ticketArray)
+
+        await insertFollower(tbId, ticketArray);
 
         res.status(200).json({ message: 'Success' });
     } catch (error) {
         console.error(error)
     }
 }
-module.exports = { sendPushNotification, followTicketHandler }
+
+const checkTicketPrice = async () => {
+    try {
+        await checkAllPrice();
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+module.exports = { sendPushNotification, followTicketHandler, checkTicketPrice }
 
 

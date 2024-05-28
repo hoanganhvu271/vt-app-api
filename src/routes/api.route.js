@@ -11,6 +11,8 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello World' })
 })
 
+// router.use(bodyParser.json());
+
 router.get('/search-ticket', searchTicketHandler)
 router.get('/get-stop', getStopHandler)
 router.get('/get-price', getTicketPrice)
