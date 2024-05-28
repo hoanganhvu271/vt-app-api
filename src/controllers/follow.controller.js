@@ -34,6 +34,7 @@ const followTicketHandler = async (req, res) => {
 
         res.status(200).json({ message: 'Success' });
     } catch (error) {
+        console.error(error)
     }
 }
 module.exports = { sendPushNotification, followTicketHandler }

@@ -7,6 +7,8 @@ const insertFollower = async (tbId, cdId) => {
             cdId: cdId
         })
     } catch (error) {
-
+        console.error(error)
     }
 }
+
+module.exports = { insertFollower }
