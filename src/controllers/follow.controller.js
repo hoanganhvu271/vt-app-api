@@ -34,6 +34,8 @@ const followTicketHandler = async (req, res) => {
         const tbId = req.body.tbId;
         const cdId = req.body.cdId;
 
+        console.log(cdId)
+
         ticketArray = JSON.parse(cdId)
         console.log(ticketArray)
 
