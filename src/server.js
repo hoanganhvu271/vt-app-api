@@ -6,7 +6,7 @@ const port = process.env.PORT || 9999;
 const apiRoutes = require("./routes/api.route");
 const cron = require('node-cron');
 
-const { sendPushNotification, checkTicketPrice } = require("./controllers/follow.controller")
+const { checkTicketPrice } = require("./controllers/follow.controller")
 
 const { connection } = require("./config/connectDB");
 //test connection
