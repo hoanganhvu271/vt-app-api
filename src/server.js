@@ -26,7 +26,7 @@ app.use("/api", apiRoutes);
 const registrationToken = 'fiN7-ZhFR-efPKtevy-gGw:APA91bFTpdTeWpGa92SrRASQNrurSDmJACDjNnj6rs3w1FC1TOQ2MmISanfoNZmfh1NSWtQZ-7h6IFiATjS13hiuXUdH4NjCNYGBsuqQZVdlwRSJsNwWca-SIL39TYl3Tw3V--Cb-1Ep';
 const title = 'Giá vé giảm!';
 const body = 'Giá vé hiện tại là $80. Hãy mua ngay!';
-sendPushNotification(registrationToken, title, body);
+// sendPushNotification(registrationToken, title, body);
 
 
 

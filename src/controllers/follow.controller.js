@@ -16,13 +16,17 @@ const sendPushNotification = async (registrationToken, title, body) => {
         token: registrationToken
     };
 
-    await admin.messaging().send(message)
-        .then((response) => {
-            console.log('Successfully sent message:', response);
-        })
-        .catch((error) => {
-            console.log('Error sending message:', error);
-        });
+    if (registrationToken) {
+        await admin.messaging().send(message)
+            .then((response) => {
+                console.log('Successfully sent message:', response);
+            })
+            .catch((error) => {
+                console.log('Error sending message:', error);
+            });
+    } else {
+        console.log('No registration token provided');
+    }
 }
 
 const followTicketHandler = async (req, res) => {
