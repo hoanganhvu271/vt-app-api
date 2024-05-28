@@ -55,7 +55,7 @@ const checkAllPrice = async () => {
                     const point2 = await db.DiaDiem.findOne({ where: { id: ticket.diem_den } })
 
                     const title = 'Giá vé đã thay đổi'
-                    const body = 'Giá vé của chuyến đi từ ' + point1 + ' đến ' + point2 + ' đã giảm'
+                    const body = 'Giá vé của chuyến đi từ ' + point1.ten + ' đến ' + point2.ten + ' đã giảm'
 
                     await sendPushNotification(device.token, title, body)
                 }
