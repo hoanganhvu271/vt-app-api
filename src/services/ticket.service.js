@@ -161,6 +161,15 @@ const getTicketById = async (id) => {
             }
         }
 
+        const carList = await db.Xe.findAll()
+
+        for (let i = 0; i < carList.length; i++) {
+            if (carList[i].id == ticket[0].id_xe) {
+                ticket[0].ten_nha_xe = carList[i].ten_nha_xe
+                ticket[0].so_cho = carList[i].so_cho
+            }
+        }
+
         return ticket
     }
     catch (e) {
