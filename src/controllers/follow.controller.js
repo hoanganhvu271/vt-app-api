@@ -15,6 +15,7 @@ const sendPushNotification = async (registrationToken, title, body) => {
         },
         token: registrationToken
     };
+    console.log(message)
 
     if (registrationToken) {
         await admin.messaging().send(message)

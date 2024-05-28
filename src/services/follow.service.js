@@ -56,7 +56,8 @@ const checkAllPrice = async () => {
 
                     const title = 'Giá vé đã thay đổi'
                     const body = 'Giá vé của chuyến đi từ ' + point1 + ' đến ' + point2 + ' đã giảm'
-                    sendPushNotification(device.token, title, body)
+
+                    await sendPushNotification(device.token, title, body)
                 }
             }
         }
