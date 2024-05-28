@@ -4,8 +4,9 @@ var bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 9999;
 const apiRoutes = require("./routes/api.route");
+const cron = require('node-cron');
 
-const { sendPushNotification } = require("./controllers/follow.controller")
+const { sendPushNotification, checkTicketPrice } = require("./controllers/follow.controller")
 
 const { connection } = require("./config/connectDB");
 //test connection
@@ -29,8 +30,17 @@ const body = 'Giá vé hiện tại là $80. Hãy mua ngay!';
 // sendPushNotification(registrationToken, title, body);
 
 
+//schedule check ticket price
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
+});
+
+//Schedule
+cron.schedule('* * * * *', () => {
+    console.log('Running a task every 1 minute');
+    checkTicketPrice();
 });
 

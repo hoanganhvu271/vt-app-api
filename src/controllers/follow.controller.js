@@ -33,13 +33,15 @@ const followTicketHandler = async (req, res) => {
     try {
         const tbId = req.body.tbId;
         const cdId = req.body.cdId;
+        const gia = req.body.price;
 
         console.log(cdId)
 
         ticketArray = JSON.parse(cdId)
+        priceList = JSON.parse(gia)
         console.log(ticketArray)
 
-        await insertFollower(tbId, ticketArray);
+        await insertFollower(tbId, ticketArray, priceList);
 
         res.status(200).json({ message: 'Success' });
     } catch (error) {

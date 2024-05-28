@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
                 autoIncrement: true
             },
             tbId: DataTypes.INTEGER,
-            cdId: DataTypes.INTEGER
+            cdId: DataTypes.INTEGER,
+            gia_ve: DataTypes.INTEGER
         },
         {
             sequelize,
