@@ -1,6 +1,8 @@
 const TheoDoi = require('../models/TheoDoi');
 const db = require('../models/index');
 
+const { sendPushNotification } = require('../controllers/follow.controller')
+
 const insertFollower = async (tbId, tickketArray, priceList) => {
     try {
 
