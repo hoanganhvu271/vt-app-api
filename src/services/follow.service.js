@@ -51,8 +51,8 @@ const checkAllPrice = async () => {
 
                     const device = await db.ThietBi.findOne({ where: { id: followList[i].tbId } })
 
-                    const point1 = await db.DiaDiem.findOne({ where: { id: ticket.diem_di } })
-                    const point2 = await db.DiaDiem.findOne({ where: { id: ticket.diem_den } })
+                    const point1 = await db.DiemDung.findOne({ where: { id: ticket.diem_di } })
+                    const point2 = await db.DiemDung.findOne({ where: { id: ticket.diem_den } })
 
                     const title = 'Giá vé đã thay đổi'
                     const body = 'Giá vé của chuyến đi từ ' + point1.ten + ' đến ' + point2.ten + ' đã giảm'
