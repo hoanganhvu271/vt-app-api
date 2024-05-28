@@ -21,7 +21,7 @@ const insertFollower = async (tbId, tickketArray) => {
 
 
         for (let i = 0; i < tickketArray.length; i++) {
-            await insertFollowerForTicket(device.id, tickketArray[i])
+            await db.TheoDoi.create(device.id, tickketArray[i])
         }
 
 
