@@ -39,7 +39,7 @@ const followTicketHandler = async (req, res) => {
 
         ticketArray = JSON.parse(cdId)
         priceList = JSON.parse(gia)
-        console.log(ticketArray)
+        console.log(ticketArray, priceList)
 
         await insertFollower(tbId, ticketArray, priceList);
 
