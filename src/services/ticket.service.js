@@ -1,5 +1,6 @@
 
 const db = require("../models/index");
+
 const searchTicket = async (from, to, time) => {
 
     try {
