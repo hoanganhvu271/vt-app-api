@@ -5,6 +5,8 @@ const { searchTicketHandler, getTicketPrice, getCarInformation, getTicketByIdHan
 const { getStopHandler } = require('../controllers/stop.controller');
 const { checkLogin, register } = require("../controllers/user.controller");
 
+const { followTicketHandler } = require('../controllers/follow.controller')
+
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello World' })
 })
@@ -16,5 +18,6 @@ router.get('/get-car', getCarInformation)
 router.get('/get-ticket', getTicketByIdHandler)
 router.post('/login', checkLogin)
 router.post('/register', register)
+router.post('/follow', followTicketHandler)
 
 module.exports = router
