@@ -6,6 +6,7 @@ const { getStopHandler } = require('../controllers/stop.controller');
 const { checkLogin, register } = require("../controllers/user.controller");
 
 const { followTicketHandler } = require('../controllers/follow.controller')
+const { billingHandler } = require('../controllers/billing.controller');
 
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello World' })
@@ -21,5 +22,6 @@ router.get('/get-ticket', getTicketByIdHandler)
 router.post('/login', checkLogin)
 router.post('/register', register)
 router.post('/follow', followTicketHandler)
+router.post('/billing', billingHandler)
 
 module.exports = router

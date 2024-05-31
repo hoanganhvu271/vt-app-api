@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            id_nguoi_dung: DataTypes.INTEGER
+            id_nguoi_dung: DataTypes.INTEGER,
+            qr_code: DataTypes.STRING,
+            created_at: DataTypes.STRING,
+            used: DataTypes.INTEGER
         },
         {
             sequelize,

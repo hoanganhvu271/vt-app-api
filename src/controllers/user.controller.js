@@ -97,8 +97,8 @@ const checkLogin = async (req, res) => {
 
 const createTokenResponse = async (userData) => {
     // //console.log(userData);
-    const accessToken = await jwtHelper.generateToken(userData, "hav271", "24h");
-    const refreshToken = await jwtHelper.generateToken(userData, "hav271", "24h");
+    const accessToken = await jwtHelper.generateToken(userData, "hav271", "240h");
+    const refreshToken = await jwtHelper.generateToken(userData, "hav271", "240h");
 
     // Lưu lại 2 mã access & Refresh token, với key chính là cái refreshToken để đảm bảo unique và không sợ hacker sửa đổi dữ liệu truyền lên.
     tokenList[refreshToken] = { accessToken, refreshToken };
