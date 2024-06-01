@@ -2,12 +2,15 @@
 const db = require('../models/index');
 const solveBilling = async (bill, qrcode, userId) => {
     try {
+        console.log(userId)
 
         const user = await db.NguoiDung.findOne({
             where: {
-                ten: userId
+                username: userId
             }
         })
+
+        console.log(user)
         await db.Ve.create({
             id_chuyen_di: bill.id_chuyen_di,
             id_nguoi_dung: user.id,

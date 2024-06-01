@@ -184,7 +184,7 @@ const getPurchasedTicketById = async (id) => {
 
         const user = await db.NguoiDung.findOne({
             where: {
-                ten: id
+                username: id
             }
 
         })
