@@ -181,9 +181,17 @@ const getTicketById = async (id) => {
 
 const getPurchasedTicketById = async (id) => {
     try {
+
+        const user = await db.NguoiDung.findOne({
+            where: {
+                ten: id
+            }
+
+        })
+
         const ticket = await db.Ve.findAll({
             where: {
-                id_nguoi_dung: id
+                id_nguoi_dung: user.id
             }
         })
         var ticketList = []
