@@ -204,6 +204,26 @@ const getPurchasedTicketById = async (id) => {
             ticketList.push(ticketInfo[0])
         }
 
+        const point = await db.DiemDung.findAll(
+        )
+
+
+
+        for (let i = 0; i < point.length; i++) {
+            for (let j = 0; j < ticketList.length; j++) {
+                if (point[i].id == ticketList[j].diem_di) {
+                    ticketList[j].diem_di = point[i].ten
+                }
+                if (point[i].id == ticketList[j].diem_den) {
+                    ticketList[j].diem_den = point[i].ten
+                }
+            }
+        }
+
+
+
+
+
         const carList = await db.Xe.findAll()
 
         for (let i = 0; i < carList.length; i++) {
