@@ -203,6 +203,18 @@ const getPurchasedTicketById = async (id) => {
             })
             ticketList.push(ticketInfo[0])
         }
+
+        const carList = await db.Xe.findAll()
+
+        for (let i = 0; i < carList.length; i++) {
+            for (let j = 0; j < ticketList.length; j++) {
+                // console.log(carList[j].id, ticketList[i].id_xe)
+                if (carList[i].id == ticketList[j].id_xe) {
+                    ticketList[j].setDataValue('ten_nha_xe', carList[i].ten_nha_xe)
+                }
+            }
+        }
+
         return ticketList
     }
     catch (e) {
