@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { searchTicketHandler, getTicketPrice, getCarInformation, getTicketByIdHandler } = require('../controllers/ticket.controller')
+const { searchTicketHandler, getTicketPrice, getCarInformation, getTicketByIdHandler, getPurchasedTicketByIdHandler } = require('../controllers/ticket.controller')
 const { getStopHandler } = require('../controllers/stop.controller');
 const { checkLogin, register } = require("../controllers/user.controller");
 
@@ -23,5 +23,6 @@ router.post('/login', checkLogin)
 router.post('/register', register)
 router.post('/follow', followTicketHandler)
 router.post('/billing', billingHandler)
+router.get('/purchased-ticket', getPurchasedTicketByIdHandler)
 
 module.exports = router

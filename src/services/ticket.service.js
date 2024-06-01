@@ -179,4 +179,29 @@ const getTicketById = async (id) => {
     }
 }
 
-module.exports = { searchTicket, getTicketPriceById, getCarInfomationById, getTicketById }
+const getPurchasedTicketById = async (id) => {
+    try {
+        const ticket = await db.Ve.findAll({
+            where: {
+                id_nguoi_dung: id
+            }
+        })
+        var ticketList = []
+        for (let i = 0; i < ticket.length; i++) {
+            const ticketInfo = await db.ChuyenDi.findAll({
+                where: {
+                    id: ticket[i].id_chuyen_di
+                }
+            })
+            ticketList.push(ticketInfo[0])
+        }
+        return ticketList
+    }
+    catch (e) {
+        console.log(e)
+        return null
+    }
+
+}
+
+module.exports = { getPurchasedTicketById, searchTicket, getTicketPriceById, getCarInfomationById, getTicketById }
