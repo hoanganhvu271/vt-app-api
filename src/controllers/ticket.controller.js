@@ -150,7 +150,7 @@ const getTicketByIdHandler = async (req, res) => {
 }
 
 const getPurchasedTicketByIdHandler = async () => {
-    var id = req.header['access-token']
+    var id = req.headers['access-token'];
     const decoded = await jwtHelper.verifyToken(id, "hav271");
     const userId = decoded.data.id;
 

@@ -1,10 +1,10 @@
 
 const db = require('../models/index');
-const solveBilling = async (bill, qrcode) => {
+const solveBilling = async (bill, qrcode, userId) => {
     try {
         await db.Ve.create({
             id_chuyen_di: bill.id_chuyen_di,
-            id_nguoi_dung: bill.id_nguoi_dung,
+            id_nguoi_dung: userId,
             qr_code: qrcode,
             created_at: bill.time,
             used: 0,

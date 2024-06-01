@@ -8,7 +8,12 @@ const billingHandler = async (req, res, next) => {
         const billJson = JSON.stringify(bill)
         const qrcode = await qr.toDataURL(billJson)
         console.log(qrcode)
-        const data = await solveBilling(bill, qrcode)
+
+        var id = req.headers['access-token'];
+        const decoded = await jwtHelper.verifyToken(id, "hav271");
+        const userId = decoded.data.id;
+
+        const data = await solveBilling(bill, qrcode, userId)
         if (data) {
             const response = {
                 status: 200,
