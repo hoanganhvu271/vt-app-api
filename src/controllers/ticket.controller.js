@@ -1,7 +1,7 @@
 
 const { searchTicket, getTicketPriceById,
     getCarInfomationById, getTicketById, getPurchasedTicketById } = require('../services/ticket.service')
-
+const jwtHelper = require('../helpers/jwt.helper')
 const searchTicketHandler = async (req, res) => {
     var from = req.query.fr
     var to = req.query.to
