@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
             id_nguoi_dung: DataTypes.INTEGER,
             qr_code: DataTypes.STRING,
             created_at: DataTypes.STRING,
-            used: DataTypes.INTEGER
+            used: DataTypes.INTEGER,
+            zalo_token: DataTypes.STRING
         },
         {
             sequelize,

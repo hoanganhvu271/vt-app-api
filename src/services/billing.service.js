@@ -7,7 +7,8 @@ const solveBilling = async (bill, qrcode) => {
             id_nguoi_dung: bill.id_nguoi_dung,
             qr_code: qrcode,
             created_at: bill.time,
-            used: 0
+            used: 0,
+            zalo_token: bill.z_token
         })
         return true
     } catch (error) {
