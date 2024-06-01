@@ -2,7 +2,7 @@ const { solveBilling } = require('../services/billing.service')
 const qr = require('qrcode')
 const jwtHelper = require('../helpers/jwt.helper')
 
-const billingHandler = async (req, res, next) => {
+const billingHandler = async (req, res) => {
     const bill = req.body
     console.log(bill)
     try {
