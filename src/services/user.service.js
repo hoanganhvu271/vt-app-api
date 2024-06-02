@@ -2,11 +2,20 @@ const db = require("../models/index");
 
 const createNewUser = async (user) => {
     try {
-        const newUser = await db.NguoiDung.create(user);
-        return true
+        const newUser = await db.NguoiDung.create({
+            username: user.username,
+            password: user.password,
+            ten: user.ten,
+            ngay_sinh: user.ngay_sinh,
+            gioi_tinh: user.gioi_tinh,
+            cccd: user.cccd,
+            email: user.email
+
+        });
+        return newUser
     } catch (error) {
         console.log(error);
-        return false;
+        return null;
     }
 }
 
