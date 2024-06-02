@@ -60,12 +60,13 @@ const checkLogin = async (req, res) => {
                     email: user.email
                 };
 
-                data = await createTokenResponse(userData)
+
+                var token = await createTokenResponse(userData)
 
                 response = {
                     status: 200,
                     message: "Đăng nhập thành công",
-                    data: data
+                    data: { user, token }
                 };
 
                 res.status(200).json(response);
