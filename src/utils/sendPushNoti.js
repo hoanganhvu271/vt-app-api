@@ -4,11 +4,12 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 
-const sendPushNotification = async (registrationToken, title, body) => {
+const sendPushNotification = async (registrationToken, title, body, ticket) => {
     const message = {
         data: {
             title: title,
-            body: body
+            body: body,
+            ticket: ticket.toString()
         },
         token: registrationToken
     };

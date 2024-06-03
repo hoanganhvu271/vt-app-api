@@ -59,7 +59,7 @@ const checkAllPrice = async () => {
                     const body = 'Giá vé của chuyến đi từ ' + point1.ten + ' đến ' + point2.ten + ' đã giảm'
 
                     // const ticketData = await getTicketById(ticket.id)
-                    await sendPushNotification(device.token, title, body)
+                    await sendPushNotification(device.token, title, body, ticket.id)
                 }
             }
         }
