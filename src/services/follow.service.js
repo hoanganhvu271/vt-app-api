@@ -2,6 +2,7 @@ const TheoDoi = require('../models/TheoDoi');
 const db = require('../models/index');
 
 const { sendPushNotification } = require('../utils/sendPushNoti')
+const { getTicketById } = require('../services/ticket.service')
 
 const insertFollower = async (tbId, tickketArray, priceList) => {
     try {
@@ -57,7 +58,8 @@ const checkAllPrice = async () => {
                     const title = 'Giá vé giảm !!!'
                     const body = 'Giá vé của chuyến đi từ ' + point1.ten + ' đến ' + point2.ten + ' đã giảm'
 
-                    await sendPushNotification(device.token, title, body)
+                    const ticketData = await getTicketById(ticket.id)
+                    await sendPushNotification(device.token, title, body, ticketData)
                 }
             }
         }

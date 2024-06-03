@@ -4,17 +4,15 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 
-const sendPushNotification = async (registrationToken, title, body) => {
-
+const sendPushNotification = async (registrationToken, title, body, ticket) => {
     const message = {
         data: {
             title: title,
-            body: body
+            body: body,
+            ticket: ticket
         },
         token: registrationToken
     };
-    console.log(message)
-
     if (registrationToken) {
         await admin.messaging().send(message)
             .then((response) => {
