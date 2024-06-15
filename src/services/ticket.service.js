@@ -156,6 +156,16 @@ const getTicketById = async (id) => {
         for (let i = 0; i < point.length; i++) {
             if (point[i].id == ticket[0].diem_di) {
                 ticket[0].diem_di = point[i].ten
+
+                const vitri = db.ViTri.findOne({
+                    where: {
+                        id: point[i].idDd
+                    }
+
+                })
+
+                ticket[0].setDataValue('vitri', vitri.longtitude + ' ' + vitri.latitude)
+
             }
             if (point[i].id == ticket[0].diem_den) {
                 ticket[0].diem_den = point[i].ten
