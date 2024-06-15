@@ -157,9 +157,9 @@ const getTicketById = async (id) => {
             if (point[i].id == ticket[0].diem_di) {
                 ticket[0].diem_di = point[i].ten
 
-                const vitri = db.ViTri.findOne({
+                const vitri = await db.ViTri.findOne({
                     where: {
-                        id: point[i].idDd
+                        idDd: point[i].id
                     }
 
                 })
